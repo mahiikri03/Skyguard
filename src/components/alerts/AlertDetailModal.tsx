@@ -5,7 +5,7 @@ import { useStore } from '@/store/useStore';
 import { X, CheckCircle, PenTool, Wrench, MessageSquare, ArrowRight, Brain, Settings } from 'lucide-react';
 import { useState } from 'react';
 import { format } from 'date-fns';
-import { BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, Cell, CartesianGrid } from 'recharts';
 
 interface AlertDetailModalProps {
   alert: Alert;

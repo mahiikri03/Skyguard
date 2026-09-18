@@ -1,18 +1,30 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Map, Bell, Wrench, Activity, FileText, Settings, ShieldAlert } from 'lucide-react';
+import { Bell, Wrench, Activity, FileText, Settings } from 'lucide-react';
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import logo from '@/app/skyguardlogo.svg';
+import DashboardSvg from '@/app/Dashboard.svg';
+import MapSvg from '@/app/stations-map.svg';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+const DashboardIcon = ({ className }: { className?: string }) => (
+  <Image src={DashboardSvg} alt="Dashboard" className={className} />
+);
+
+const MapIcon = ({ className }: { className?: string }) => (
+  <Image src={MapSvg} alt="Map" className={className} />
+);
+
 const navItems = [
-  { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-  { name: 'Stations Map', href: '/stations', icon: Map },
+  { name: 'Dashboard', href: '/', icon: DashboardIcon },
+  { name: 'Stations Map', href: '/stations', icon: MapIcon },
   { name: 'Alerts', href: '/alerts', icon: Bell },
   { name: 'Sensor Health', href: '/maintenance', icon: Wrench },
   { name: 'Data Simulation', href: '/simulation', icon: Activity },
@@ -26,8 +38,7 @@ export function Sidebar() {
   return (
     <div className="flex h-screen w-64 flex-col bg-slate-950/40 backdrop-blur-md text-slate-300 border-r border-slate-800/50 shadow-xl z-20">
       <div className="flex h-16 items-center px-6 border-b border-slate-800/50">
-        <ShieldAlert className="h-6 w-6 text-indigo-500 mr-2" />
-        <span className="text-lg font-bold text-white tracking-wide">SkyGuard AI</span>
+        <Image src={logo} alt="SkyGuard AI Logo" className="h-8 w-auto" priority />
       </div>
       <div className="flex-1 overflow-y-auto py-4">
         <nav className="space-y-1 px-3">
